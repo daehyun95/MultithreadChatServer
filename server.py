@@ -29,7 +29,7 @@ def broadcast(message, sender_client=None, chat_room='default'):
             try:
                 client.send(formatted_message.encode('utf-8'))
             except socket.error as e:
-                if e.errno == socket.errno.EPIPE:  # BrokenPipeError
+                if e.errno == socket.errno.EPIPE:
                     handle_disconnection(client, chat_room)
 
 # Function to handle client disconnection from a specific chat room
@@ -132,7 +132,6 @@ def handle_out_command(client, chat_room='default'):
 
 
 # Function to handle client messages in a specific chat room
-# Function to handle client messages in a specific chat room
 def handle(client, chat_room='default'):
     while True:
         try:
@@ -155,7 +154,7 @@ def handle(client, chat_room='default'):
             else:
                 broadcast(message, sender_client=client, chat_room=chat_room)
         except socket.error as e:
-            if e.errno == socket.errno.EPIPE:  # BrokenPipeError
+            if e.errno == socket.errno.EPIPE:  
                 handle_disconnection(client, chat_room)
             break
 
@@ -189,5 +188,5 @@ def receive():
         thread.start()
 
 # Start the server
-print(f"{Fore.CYAN}Server is listening...{Style.RESET_ALL}")
+print(f"{Fore.CYAN}Server is listening {Style.RESET_ALL}")
 receive()
