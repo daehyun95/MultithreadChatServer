@@ -1,4 +1,4 @@
-# TCPchat
+# Multithread TCP Chat
 
 Detailed Working/Analysis/Features/Design
 
